@@ -22,5 +22,13 @@
   {
     "iconeName": "mdi:instagram",
     "iconeColored": false
+  },
+  {
+    "iconeName": "carbon:machine-learning",
+    "iconeColored": false
+  },
+  {
+    "iconeName": "tabler:drone",
+    "iconeColored": false
   }
 ]

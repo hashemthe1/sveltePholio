@@ -1,25 +1,143 @@
 <script lang="ts">
-	import Template from '$lib/components/utils/template.svelte';
+	const projects = [
+		{
+			title: 'We use cookies.',
+			description: 'We use cookies to ensure that we give you the best experience on our website.',
+			buttonLink: '#',
+			icone: 'i-carbon-machine-learning'
+		},
+		{
+			title: 'We use cookies.',
+			description: 'We use cookies to ensure that we give you the best experience on our website.',
+			buttonLink: '#',
+			icone: 'i-tabler-drone'
+		},
+		{
+			title: 'We use cookies.',
+			description: 'We use cookies to ensure that we give you the best experience on our website.',
+			buttonLink: '#',
+			icone: 'i-carbon-machine-learning'
+		},
+		{
+			title: 'We use cookies.',
+			description: 'We use cookies to ensure that we give you the best experience on our website.',
+			buttonLink: '#',
+			icone: 'i-carbon-machine-learning'
+		}
+	];
 </script>
 
-<div class="flex-col gap-6 pb-40 flex-center stretch">
-	<div class="avatar">
-		<div class="rounded-full w-44">
-			<img alt="avatar" src="/avatar.jpeg" />
+<div class="flex flex-row gap-4 flex-wrap justify-center py-20">
+	{#each projects as project}
+		<div class="card">
+			<div class="{project.icone} text-[1200px]" />
+			<p class="cookieHeading">{project.title}</p>
+
+			{#if project.description}
+				<p class="cookieDescription">
+					{project.description}
+				</p>
+			{/if}
+
+			{#if project.buttonLink}
+				<a href={project.buttonLink} class="buttonContainer">
+					<button class="acceptButton px-5">Learn More</button>
+				</a>
+			{/if}
 		</div>
-	</div>
-	<div class="prose text-center">
-		<h1 class="mb-3">Mahmood Ihab Khalil</h1>
-		<h6>Full Stack Developer</h6>
-		<p>
-			Hello, I'm Mahmood, a full stack developer with a passion for creating beautiful and
-			functional full stack websites and applications. I focus on technology design which includes
-			but is not limited to and in no order: Database design, Backend design, Frontend state design,
-			AB testing, CI/CD, and DevOps.
-		</p>
-	</div>
-	<div class="gap-4 flex-center">
-		<a href="/projects" class="btn btn-primary btn-wide">Projects</a>
-		<a href="/contact" class="btn btn-neutral btn-wide">Contact</a>
-	</div>
+	{/each}
 </div>
+
+<style lang="postcss">
+	.card {
+		width: 300px;
+		height: 220px;
+		background-color: rgb(255, 255, 255);
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 20px 30px;
+		gap: 13px;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+	}
+
+	#cookieSvg {
+		width: 50px;
+	}
+
+	#cookieSvg g path {
+		fill: rgb(97, 81, 81);
+	}
+
+	.cookieHeading {
+		font-size: 1.2em;
+		font-weight: 800;
+		color: rgb(26, 26, 26);
+	}
+
+	.cookieDescription {
+		text-align: center;
+		font-size: 0.7em;
+		font-weight: 600;
+		color: rgb(99, 99, 99);
+	}
+
+	.cookieDescription a {
+		--tw-text-opacity: 1;
+		color: rgb(59 130 246);
+	}
+
+	.cookieDescription a:hover {
+		-webkit-text-decoration-line: underline;
+		text-decoration-line: underline;
+	}
+
+	.buttonContainer {
+		display: flex;
+		gap: 20px;
+		flex-direction: row;
+	}
+
+	.acceptButton {
+		height: 30px;
+		background-color: #7b57ff;
+		transition-duration: 0.2s;
+		border: none;
+		color: rgb(241, 241, 241);
+		cursor: pointer;
+		font-weight: 600;
+		border-radius: 20px;
+		box-shadow: 0 4px 6px -1px #977ef3, 0 2px 4px -1px #977ef3;
+		transition: all 0.6s ease;
+	}
+
+	.declineButton {
+		width: 80px;
+		height: 30px;
+		background-color: #dadada;
+		transition-duration: 0.2s;
+		color: rgb(46, 46, 46);
+		border: none;
+		cursor: not-allowed;
+		font-weight: 600;
+		border-radius: 20px;
+		box-shadow: 0 4px 6px -1px #bebdbd, 0 2px 4px -1px #bebdbd;
+		transition: all 0.6s ease;
+	}
+
+	.declineButton:hover {
+		background-color: #ebebeb;
+		box-shadow: 0 10px 15px -3px #bebdbd, 0 4px 6px -2px #bebdbd;
+		transition-duration: 0.2s;
+	}
+
+	.acceptButton:hover {
+		background-color: #9173ff;
+		box-shadow: 0 10px 15px -3px #977ef3, 0 4px 6px -2px #977ef3;
+		transition-duration: 0.2s;
+	}
+</style>
