@@ -57,7 +57,7 @@
 </div>
 
 <style lang="postcss">
-	:global([data-theme='forest']) .icon {
+	:global([data-theme='night']) .icon {
 		@apply i-carbon-moon;
 	}
 
