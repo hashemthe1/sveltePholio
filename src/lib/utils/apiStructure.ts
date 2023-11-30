@@ -23,7 +23,7 @@ export const apiStructure = {
 				email: z.string().email({ message: 'Invalid Email' }),
 				message: z
 					.string()
-					.min(10, { message: 'Message must be at least 10 characters long' })
+					.min(1, { message: 'Message must be at least 1 characters long' })
 					.max(500, { message: 'Message must be less than 500 characters long' })
 			}) satisfies AnyZodObject
 		}

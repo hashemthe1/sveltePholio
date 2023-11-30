@@ -1,7 +1,7 @@
 import { apiStructure } from '$lib/utils/apiStructure.js';
 import { fail } from '@sveltejs/kit';
 import { type z, type AnyZodObject, ZodError } from 'zod';
-import { prisma } from '$lib/server/prismaClient.js';
+import {sendContact} from '$lib/server/nodemailer'
 import type { Actions } from './$types';
 import { settings } from '$lib/utils/settings';
 
@@ -35,14 +35,12 @@ export const actions: Actions = {
 
 		try {
 			if (parsedData) {
-				await prisma.contact.create({
-					data: {
-						appName: settings.appName,
-						contactName: parsedData.name,
-						email: parsedData.email,
-						message: parsedData.message
-					}
-				});
+				await sendContact({
+					appName: settings.appName,
+					contactName: parsedData.name,
+					email: parsedData.email,
+					message: parsedData.message
+				})
 				return { success: true };
 			}
 		} catch (error) {
